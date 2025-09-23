@@ -5,6 +5,7 @@ class Auto
     private $marca;
     private $modelo;
     private $dniDuenio;
+    private $mensajeoperacion;
 
     public function __construct($patente, $marca, $modelo, $dniDuenio)
     {
@@ -54,9 +55,44 @@ class Auto
         $this->dniDuenio = $dniDuenio;
     }
 
+    public function getmensajeoperacion(){
+        return $this->mensajeoperacion ;
+    }
+
+    public function setmensajeoperacion($mensajeoperacion){
+        $this->mensajeoperacion = $mensajeoperacion ;
+    }
+
+        public function setear($patente, $marca, $modelo, $dniDuenio)
+        {
+            $this->setPatente($patente);
+            $this->setMarca($marca);
+            $this->setModelo($modelo);
+            $this->setDniDuenio($dniDuenio);
+        }
+
     public function __toString()
     {
         return "Patente: " . $this->patente . ", Marca: " . $this->marca . ", Modelo: " . $this->modelo . ", DNI Dueño: " . $this->dniDuenio;
+    }
+
+        public function cargar(){
+        $resp = false;
+        $base=new BaseDatos();
+        $sql="SELECT * FROM auto WHERE Patente = '".$this->getPatente()."'";
+        if ($base->Iniciar()) {
+            $res = $base->Ejecutar($sql);
+            if($res>-1){
+                if($res>0){
+                    $row = $base->Registro();
+                    $this->setear($row['Patente'], $row['Marca'], $row['Modelo'], $row['DniDuenio']);
+                }
+            }
+        } else {
+            $this->setmensajeoperacion("Auto->cargar: ".$base->getError());
+        }
+        return $resp;    
+        
     }
 
 } ?>
