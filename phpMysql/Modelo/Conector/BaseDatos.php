@@ -11,6 +11,8 @@ class BaseDatos extends PDO
     private $conec;
     private $indice;
     private $resultado;
+    private $error;
+    private $sql;
 
     public function __construct()
     {
@@ -175,7 +177,7 @@ class BaseDatos extends PDO
             $this->setIndice(0);
             $this->setResultado($arregloResult);
         }
-        echo " La cantidad es " . $cant;
+        // Se evita imprimir en capa de modelo/BD para respetar MVC
         return $cant;
 
     }
@@ -202,8 +204,7 @@ class BaseDatos extends PDO
             }
 
         }
-        echo " El valor de fila actual es:";
-        print_r($filaActual);
+        // No imprimir registros desde la capa de datos
         return $filaActual;
     }
 
@@ -214,11 +215,7 @@ class BaseDatos extends PDO
     {
         $e = $this->errorInfo();
         $this->setError($e);
-        if ($this->getDebug()) {
-            echo "<pre>";
-            print_r($e);
-            echo "</pre>";
-        }
+        // Mantener silenciosa la capa de datos aun en modo debug
 
     }
 
