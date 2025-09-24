@@ -35,7 +35,7 @@ class Auto
     }
 
     public function __toString(){
-        return "Patente: ".$this->patente.", Marca: ".$this->marca.", Modelo: ".$this->modelo.", DNI Dueño: ".$this->dniDuenio;
+        return "Patente: ".$this->patente.", Marca: ".$this->marca.", Modelo: ".$this->modelo.", DNI DueÃ±o: ".$this->dniDuenio;
     }
 
     // CRUD

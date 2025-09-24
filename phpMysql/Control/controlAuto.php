@@ -13,7 +13,7 @@ class controlAuto
     {
         $resultado = null;
         $auto = new Auto($patente);
-        if($auto->cargar()){
+        if($auto->obtener()){
             $resultado = $auto;
         }
         return $resultado;
@@ -38,7 +38,7 @@ class controlAuto
     {
         $resultado = null;
         $auto = new Auto($patente);
-        if($auto->cargar()){
+        if($auto->obtener()){
             $auto->setear($patente, $marca, $modelo, $dniDuenio);
             if($auto->modificar()){
                 $resultado = $auto;
@@ -51,7 +51,7 @@ class controlAuto
     {
         $resultado = false;
         $auto = new Auto($patente);
-        if($auto->cargar()){
+        if($auto->obtener()){
             $resultado = $auto->eliminar();
         }
         return $resultado;
