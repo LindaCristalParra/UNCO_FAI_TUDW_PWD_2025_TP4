@@ -52,7 +52,7 @@ class Persona
 
     // CRUD
 
-    public function cargar(){
+    public function obtener(){
         $resp = false;
         $base = new BaseDatos();
         $sql = "SELECT * FROM persona WHERE NroDni='".$this->getNroDni()."'";
@@ -63,7 +63,7 @@ class Persona
                 $resp = true;
             }
         } else {
-            $this->setMensajeOperacion("Persona->cargar: ".$base->getError());
+            $this->setMensajeOperacion("Persona->obtener: ".$base->getError());
         }
         return $resp;
     }

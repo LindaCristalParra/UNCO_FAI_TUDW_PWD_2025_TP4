@@ -13,7 +13,7 @@ class controlPersona
     {
         $resultado = null;
         $persona = new Persona($nroDni);
-        if($persona->cargar()){
+        if($persona->obtener()){
             $resultado = $persona;
         }
         return $resultado;
@@ -38,7 +38,7 @@ class controlPersona
     {
         $resultado = null;
         $persona = new Persona($nroDni);
-        if($persona->cargar()){
+        if($persona->obtener()){
             $persona->setear($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio);
             if($persona->modificar()){
                 $resultado = $persona;
@@ -51,7 +51,7 @@ class controlPersona
     {
         $resultado = false;
         $persona = new Persona($nroDni);
-        if($persona->cargar()){
+        if($persona->obtener()){
             $resultado = $persona->eliminar();
         }
         return $resultado;

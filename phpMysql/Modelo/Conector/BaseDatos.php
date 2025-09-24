@@ -37,8 +37,8 @@ class BaseDatos extends PDO
 
     }
     /**
-     * Inicia la coneccion con el Servidor y la  Base Datos Mysql.
-     * Retorna true si la coneccion con el servidor se pudo establecer y false en caso contrario
+     * Inicia la conexión con el Servidor y la  Base Datos Mysql.
+     * Retorna true si la conexión con el servidor se pudo establecer y false en caso contrario
      *
      * @return boolean
      */
