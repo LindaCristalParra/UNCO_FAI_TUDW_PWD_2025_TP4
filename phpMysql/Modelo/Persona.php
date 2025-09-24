@@ -52,15 +52,15 @@ class Persona
 
     // CRUD
 
-    public function obtener(){
+    public function obtener($nroDni){
         $resp = false;
         $base = new BaseDatos();
-        $sql = "SELECT * FROM persona WHERE NroDni='".$this->getNroDni()."'";
+        $sql = "SELECT * FROM persona WHERE NroDni='".$nroDni."'";
         if($base->Iniciar()){
             if($base->Ejecutar($sql) > 0){
                 $row = $base->Registro();
                 $this->setear($row['NroDni'], $row['Apellido'], $row['Nombre'], $row['fechaNac'], $row['Telefono'], $row['Domicilio']);
-                $resp = true;
+                $resp = $this;
             }
         } else {
             $this->setMensajeOperacion("Persona->obtener: ".$base->getError());

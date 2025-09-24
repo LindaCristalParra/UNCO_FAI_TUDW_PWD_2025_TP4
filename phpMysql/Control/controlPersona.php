@@ -3,7 +3,7 @@ require_once __DIR__ . "/../Modelo/Persona.php";
 
 class controlPersona
 {
-    public function listar($condicion = "")
+    public function listar($condicion = ""): array
     {
         $resultado = Persona::listar($condicion);
         return $resultado;
@@ -13,7 +13,7 @@ class controlPersona
     {
         $resultado = null;
         $persona = new Persona($nroDni);
-        if($persona->obtener()){
+        if ($persona->obtener($nroDni)) {
             $resultado = $persona;
         }
         return $resultado;
@@ -21,15 +21,14 @@ class controlPersona
 
     public function crear($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio)
     {
-        $resultado = null;
+        $resultado = false;
         // Evitar duplicados por clave primaria
         $existente = $this->buscar($nroDni);
-        if ($existente) {
-            return null;
-        }
-        $persona = new Persona($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio);
-        if($persona->insertar()){
-            $resultado = $persona;
+        if (!$existente) {
+            $persona = new Persona($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio);
+            if ($persona->insertar()) {
+                $resultado = true;
+            }
         }
         return $resultado;
     }
@@ -38,9 +37,9 @@ class controlPersona
     {
         $resultado = null;
         $persona = new Persona($nroDni);
-        if($persona->obtener()){
+        if ($persona->obtener($nroDni)) {
             $persona->setear($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio);
-            if($persona->modificar()){
+            if ($persona->modificar()) {
                 $resultado = $persona;
             }
         }
@@ -51,11 +50,10 @@ class controlPersona
     {
         $resultado = false;
         $persona = new Persona($nroDni);
-        if($persona->obtener()){
+        if ($persona->obtener($nroDni)) {
             $resultado = $persona->eliminar();
         }
         return $resultado;
     }
 }
 ?>
-
