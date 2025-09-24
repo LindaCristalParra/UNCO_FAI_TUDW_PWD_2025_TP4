@@ -61,3 +61,6 @@ formulario; a su vez este nuevo formulario deberá permitir modificar los datos 
 documento) y estos serán enviados a otra página “ActualizarDatosPersona.php” que actualiza los datos de la
 persona. Utilizar css y validaciones javaScript cuando crea conveniente. Recordar usar la capa de control
 antes generada, no se puede acceder directamente a las clases del ORM.
+
+
+Grupo: Ramiro Navarrete, Andrea Crespillo, Lautaro Mellado y Linda Parra
