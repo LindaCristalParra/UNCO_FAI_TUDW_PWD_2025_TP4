@@ -7,6 +7,7 @@ include __DIR__ . '/estructura/header.php';
 <div class="row">
   <div class="col-md-6 col-lg-5">
     <form class="needs-validation" novalidate action="accion/formAccion.php" method="post" id="formBuscarAuto">
+      <input type="hidden" name="op" value="buscarAuto">
       <div class="mb-3">
         <label for="patente" class="form-label">Patente</label>
         <input type="text" class="form-control" id="patente" name="patente" required maxlength="10" pattern="^[A-ZÁÉÍÓÚÑ0-9\s-]{5,10}$" placeholder="Ej: ABC 123 o AB 123 CD">

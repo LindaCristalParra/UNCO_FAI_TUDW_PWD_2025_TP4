@@ -7,6 +7,7 @@ include __DIR__ . '/estructura/header.php';
     <div class="row">
       <div class="col-lg-6">
         <form class="needs-validation" novalidate action="accion/formAccion.php" method="post" id="formBuscarPersona">
+          <input type="hidden" name="op" value="buscarPersona">
           <div class="mb-3">
             <label for="dni" class="form-label">DNI</label>
             <input type="text" class="form-control" id="dni" name="dni" required maxlength="10" pattern="^[0-9]{7,10}$" placeholder="Solo números">

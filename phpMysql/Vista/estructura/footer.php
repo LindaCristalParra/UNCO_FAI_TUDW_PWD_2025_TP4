@@ -5,8 +5,8 @@
     <span>UNCo - TUDW - Programación Web Dinámica - TP4</span>
   </div>
 </footer>
-<?php $basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/'); ?>
-<script src="<?php echo $basePath; ?>/js/bootstrap.bundle.min.js"></script>
+
+<script src="/UNCO_FAI_TUDW_PWD_2025_TP4/phpMysql/Vista/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
