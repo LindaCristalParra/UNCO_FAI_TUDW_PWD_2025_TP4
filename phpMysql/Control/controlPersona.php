@@ -3,6 +3,18 @@ require_once __DIR__ . "/../Modelo/Persona.php";
 
 class controlPersona
 {
+    public function getFormData($request)
+    {
+        $data = [
+            'nroDni'     => isset($request['nroDni']) ? trim($request['nroDni']) : null,
+            'apellido'   => isset($request['apellido']) ? trim($request['apellido']) : null,
+            'nombre'     => isset($request['nombre']) ? trim($request['nombre']) : null,
+            'fechaNac'   => isset($request['fechaNac']) ? trim($request['fechaNac']) : null,
+            'telefono'   => isset($request['telefono']) ? trim($request['telefono']) : null,
+            'domicilio'  => isset($request['domicilio']) ? trim($request['domicilio']) : null,
+        ];
+        return $data;
+    }
     public function listar($condicion = ""): array
     {
         $resultado = Persona::listar($condicion);
