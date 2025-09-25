@@ -4,6 +4,17 @@ require_once __DIR__ . "/../Modelo/Persona.php";
 
 class controlAuto
 {
+    public function getFormData($request)
+    {
+        $data = [
+            'patente'   => isset($request['patente']) ? trim($request['patente']) : null,
+            'marca'     => isset($request['marca']) ? trim($request['marca']) : null,
+            'modelo'    => isset($request['modelo']) ? trim($request['modelo']) : null,
+            'dniDuenio' => isset($request['dniDuenio']) ? trim($request['dniDuenio']) : null,
+            
+        ];
+        return $data;
+    }
     public function listar($condicion = "")
     {
         $resultado = Auto::listar($condicion);

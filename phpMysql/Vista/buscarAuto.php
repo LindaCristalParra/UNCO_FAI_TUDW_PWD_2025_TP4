@@ -6,7 +6,7 @@ include __DIR__ . '/estructura/header.php';
 <h1 class="mb-4">Buscar Auto por Patente</h1>
 <div class="row">
   <div class="col-md-6 col-lg-5">
-    <form class="needs-validation" novalidate action="accion/formAccion.php" method="post" id="formBuscarAuto">
+    <form class="needs-validation" novalidate action="accion/formAccion.php" method="get" id="formBuscarAuto">
       <input type="hidden" name="op" value="buscarAuto">
       <div class="mb-3">
         <label for="patente" class="form-label">Patente</label>

@@ -5,7 +5,9 @@ require_once __DIR__ . '/../../Control/controlPersona.php';
 $pageTitle = 'Resultado de Búsqueda';
 include __DIR__ . '/../estructura/header.php';
 
-$patente = isset($_POST['patente']) ? trim($_POST['patente']) : '';
+$controlAuto = new controlAuto();
+$formData = $controlAuto->getFormData($_GET);
+$patente = $formData['patente'];
 
 if ($patente === '') {
     echo '<div class="alert alert-warning">No se recibió la patente.</div>';
@@ -13,7 +15,6 @@ if ($patente === '') {
     exit;
 }
 
-$controlAuto = new controlAuto();
 $auto = $controlAuto->buscar($patente);
 
 if ($auto) {
