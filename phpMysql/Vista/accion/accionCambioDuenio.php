@@ -35,7 +35,7 @@ if (!$auto) {
 }
 
 // Actualizar dueño conservando datos actuales del auto
-$actualizado = $ca->modificar($auto->getPatente(), $auto->getMarca(), $auto->getModelo(), $dni);
+$actualizado = $ca->modificarDuenio($auto->getPatente(), $dni);
 
 if ($actualizado) {
   echo '<div class="alert alert-success">Se actualizó el dueño del auto correctamente.</div>';

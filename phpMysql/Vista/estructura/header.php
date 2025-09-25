@@ -7,8 +7,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo isset($pageTitle) ? htmlspecialchars($pageTitle) : 'Aplicación TP4'; ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo rtrim(dirname($_SERVER['SCRIPT_NAME']), '/'); ?>/css/styles.css">
+    <?php $basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/'); ?>
+    <link rel="stylesheet" href="<?php echo $basePath; ?>/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $basePath; ?>/css/styles.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -25,10 +26,9 @@
         <li class="nav-item"><a class="nav-link" href="NuevaPersona.php">Nueva Persona</a></li>
         <li class="nav-item"><a class="nav-link" href="NuevoAuto.php">Nuevo Auto</a></li>
         <li class="nav-item"><a class="nav-link" href="CambioDuenio.php">Cambio de Dueño</a></li>
-        <li class="nav-item"><a class="nav-link" href="BuscarPersona.html">Buscar Persona</a></li>
+        <li class="nav-item"><a class="nav-link" href="BuscarPersona.php">Buscar Persona</a></li>
       </ul>
     </div>
   </div>
   </nav>
 <main class="container py-4">
-

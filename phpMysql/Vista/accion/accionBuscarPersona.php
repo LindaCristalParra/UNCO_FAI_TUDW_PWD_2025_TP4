@@ -17,7 +17,7 @@ $persona = $cp->buscar($dni);
 
 if (!$persona) {
   echo '<div class="alert alert-danger">No se encontró una persona con el DNI ingresado.</div>';
-  echo '<a class="btn btn-secondary" href="../BuscarPersona.html">Volver</a>';
+  echo '<a class="btn btn-secondary" href="../BuscarPersona.php">Volver</a>';
   include __DIR__ . '/../estructura/footer.php';
   exit;
 }
@@ -26,7 +26,7 @@ if (!$persona) {
 <h1 class="mb-4">Editar Persona</h1>
 <div class="row">
   <div class="col-lg-6">
-    <form class="needs-validation" novalidate action="ActualizarDatosPersona.php" method="post" id="formEditarPersona">
+    <form class="needs-validation" novalidate action="formAccion.php" method="post" id="formEditarPersona">
       <div class="mb-3">
         <label class="form-label">DNI</label>
         <input type="text" class="form-control" name="dni" value="<?php echo htmlspecialchars($persona->getNroDni()); ?>" readonly>
