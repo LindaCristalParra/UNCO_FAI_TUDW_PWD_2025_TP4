@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../Modelo/Auto.php";
+require_once __DIR__ . "/../Modelo/Persona.php";
 
 class controlAuto
 {
@@ -13,7 +14,7 @@ class controlAuto
     {
         $resultado = null;
         $auto = new Auto($patente);
-        if($auto->obtener()){
+        if ($auto->obtener($patente)) {
             $resultado = $auto;
         }
         return $resultado;
@@ -28,20 +29,28 @@ class controlAuto
             return null;
         }
         $auto = new Auto($patente, $marca, $modelo, $dniDuenio);
-        if($auto->insertar()){
+        if ($auto->insertar()) {
             $resultado = $auto;
         }
         return $resultado;
     }
 
-    public function modificar($patente, $marca, $modelo, $dniDuenio)
-    {
-        $resultado = null;
+    public function modificarDuenio($patente, $dniNuevoDuenio)
+    {//primero verifico que exista el auto 
+        // segundo verifico que la persona exista en nuestra base
+        $resultado = false;
         $auto = new Auto($patente);
-        if($auto->obtener()){
-            $auto->setear($patente, $marca, $modelo, $dniDuenio);
-            if($auto->modificar()){
-                $resultado = $auto;
+
+        if ($auto->obtener($patente)) {
+            //verificar es que el dni actual no se el mismo que quiero modificar
+            if (!($auto->getDniDuenio() === $dniNuevoDuenio)) {
+                $nuevoDuenio = new Persona($dniNuevoDuenio);
+                if ($nuevoDuenio->obtener($dniNuevoDuenio)) {
+                    $auto->setear($patente, $auto->getMarca(), $auto->getModelo(), $dniNuevoDuenio);
+                    if ($auto->modificar()) {
+                        $resultado = true;
+                    }
+                }
             }
         }
         return $resultado;
@@ -51,7 +60,7 @@ class controlAuto
     {
         $resultado = false;
         $auto = new Auto($patente);
-        if($auto->obtener()){
+        if ($auto->obtener($patente)) {
             $resultado = $auto->eliminar();
         }
         return $resultado;
