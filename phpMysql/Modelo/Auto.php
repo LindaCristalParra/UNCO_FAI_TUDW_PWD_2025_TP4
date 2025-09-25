@@ -39,18 +39,18 @@ class Auto
     }
 
     // CRUD
-    public function cargar(){
+    public function obtener($patente){
         $resp = false;
         $base = new BaseDatos();
-        $sql = "SELECT * FROM auto WHERE Patente='".$this->getPatente()."'";
+        $sql = "SELECT * FROM auto WHERE Patente='".$patente."'";
         if($base->Iniciar()){
             if($base->Ejecutar($sql) > 0){
                 $row = $base->Registro();
                 $this->setear($row['Patente'], $row['Marca'], $row['Modelo'], $row['DniDuenio']);
-                $resp = true;
+                $resp = $this;
             }
         } else {
-            $this->setMensajeOperacion("Auto->cargar: ".$base->getError());
+            $this->setMensajeOperacion("Auto->obtener: ".$base->getError());
         }
         return $resp;
     }
