@@ -14,8 +14,8 @@ include __DIR__ . '/estructura/header.php';
         <div class="invalid-feedback">Ingresá una patente válida.</div>
       </div>
       <div class="mb-3">
-        <label for="dni" class="form-label">DNI nuevo dueño</label>
-        <input type="text" class="form-control" id="dni" name="dni" required maxlength="10" pattern="^[0-9]{7,10}$" placeholder="Solo números">
+        <label for="dniDuenio" class="form-label">DNI nuevo dueño</label>
+        <input type="text" class="form-control" id="dniDuenio" name="dniDuenio" required maxlength="10" pattern="^[0-9]{7,10}$" placeholder="Solo números">
         <div class="invalid-feedback">Ingresá un DNI válido (7 a 10 dígitos).</div>
       </div>
       <button type="submit" class="btn btn-primary">Actualizar</button>

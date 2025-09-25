@@ -5,8 +5,10 @@ require_once __DIR__ . '/../../Control/controlPersona.php';
 $pageTitle = 'Cambio de Dueño - Resultado';
 include __DIR__ . '/../estructura/header.php';
 
-$patente = isset($_POST['patente']) ? trim($_POST['patente']) : '';
-$dni = isset($_POST['dni']) ? trim($_POST['dni']) : '';
+$controlAuto = new controlAuto();
+$formData = $controlAuto->getFormData($_POST);
+$patente = $formData['patente'] ?? '';
+$dni = $formData['dniDuenio'] ?? '';
 
 if ($patente === '' || $dni === '') {
   echo '<div class="alert alert-warning">Faltan datos obligatorios.</div>';
@@ -15,8 +17,8 @@ if ($patente === '' || $dni === '') {
   exit;
 }
 
-$cp = new controlPersona();
-$persona = $cp->buscar($dni);
+$controlPersona = new controlPersona();
+$persona = $controlPersona->buscar($dni);
 if (!$persona) {
   echo '<div class="alert alert-danger">El DNI ingresado no existe. Debés cargar la persona primero.</div>';
   echo '<a class="btn btn-primary" href="../NuevaPersona.php">Cargar persona</a> ';
@@ -25,8 +27,8 @@ if (!$persona) {
   exit;
 }
 
-$ca = new controlAuto();
-$auto = $ca->buscar($patente);
+$auto = $controlAuto->buscar($patente);
+
 if (!$auto) {
   echo '<div class="alert alert-danger">No existe un auto con la patente ingresada.</div>';
   echo '<a class="btn btn-secondary" href="../CambioDuenio.php">Volver</a>';
@@ -35,7 +37,7 @@ if (!$auto) {
 }
 
 // Actualizar dueño conservando datos actuales del auto
-$actualizado = $ca->modificarDuenio($auto->getPatente(), $dni);
+$actualizado = $controlAuto->modificarDuenio($auto->getPatente(), $dni);
 
 if ($actualizado) {
   echo '<div class="alert alert-success">Se actualizó el dueño del auto correctamente.</div>';
