@@ -4,12 +4,15 @@ require_once __DIR__ . '/../../Control/controlPersona.php';
 $pageTitle = 'Alta de Persona - Resultado';
 include __DIR__ . '/../estructura/header.php';
 
-$dni = isset($_POST['dni']) ? trim($_POST['dni']) : '';
-$apellido = isset($_POST['apellido']) ? trim($_POST['apellido']) : '';
-$nombre = isset($_POST['nombre']) ? trim($_POST['nombre']) : '';
-$fechaNac = isset($_POST['fechaNac']) ? trim($_POST['fechaNac']) : '';
-$telefono = isset($_POST['telefono']) ? trim($_POST['telefono']) : '';
-$domicilio = isset($_POST['domicilio']) ? trim($_POST['domicilio']) : '';
+$controlPersona = new controlPersona();
+$formData = $controlPersona->getFormData($_POST);
+$dni = $formData['dni'] ?? '';
+$apellido = $formData['apellido'] ?? '';
+$nombre = $formData['nombre'] ?? '';
+$fechaNac = $formData['fechaNac'] ?? '';
+$telefono = $formData['telefono'] ?? '';
+$domicilio = $formData['domicilio'] ?? '';
+
 
 if ($dni === '' || $apellido === '' || $nombre === '' || $fechaNac === '' || $telefono === '' || $domicilio === '') {
   echo '<div class="alert alert-warning">Faltan datos obligatorios.</div>';
@@ -18,8 +21,7 @@ if ($dni === '' || $apellido === '' || $nombre === '' || $fechaNac === '' || $te
   exit;
 }
 
-$cp = new controlPersona();
-$nueva = $cp->crear($dni, $apellido, $nombre, $fechaNac, $telefono, $domicilio);
+$nueva = $controlPersona->crear($dni, $apellido, $nombre, $fechaNac, $telefono, $domicilio);
 
 if ($nueva) {
   echo '<div class="alert alert-success">La persona se cargó correctamente.</div>';
