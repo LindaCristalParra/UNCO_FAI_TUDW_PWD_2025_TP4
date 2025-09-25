@@ -46,17 +46,19 @@ class controlPersona
     }
 
     public function modificar($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio)
-    {
-        $resultado = null;
-        $persona = new Persona($nroDni);
-        if ($persona->obtener($nroDni)) {
+{
+    $resultado = false;
+    $persona = new Persona($nroDni);
+    if ($persona->obtener($nroDni)) {
+        if ($persona->getNroDni() == $nroDni) {
             $persona->setear($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio);
             if ($persona->modificar()) {
-                $resultado = $persona;
+                $resultado = true;
             }
         }
-        return $resultado;
     }
+    return $resultado;
+}
 
     public function eliminar($nroDni)
     {

@@ -29,6 +29,7 @@ if (!$persona) {
 <div class="row">
   <div class="col-lg-6">
     <form class="needs-validation" novalidate action="formAccion.php" method="post" id="formEditarPersona">
+      <input type="hidden" name="op" value="actualizarPersona">
       <div class="mb-3">
         <label class="form-label">DNI</label>
         <input type="text" class="form-control" name="dni" value="<?php echo htmlspecialchars($persona->getNroDni()); ?>" readonly>
