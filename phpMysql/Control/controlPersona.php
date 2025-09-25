@@ -6,7 +6,7 @@ class controlPersona
     public function getFormData($request)
     {
         $data = [
-            'nroDni'     => isset($request['nroDni']) ? trim($request['nroDni']) : null,
+            'dni'     => isset($request['dni']) ? trim($request['dni']) : null,
             'apellido'   => isset($request['apellido']) ? trim($request['apellido']) : null,
             'nombre'     => isset($request['nombre']) ? trim($request['nombre']) : null,
             'fechaNac'   => isset($request['fechaNac']) ? trim($request['fechaNac']) : null,

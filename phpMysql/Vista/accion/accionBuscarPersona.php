@@ -4,7 +4,10 @@ require_once __DIR__ . '/../../Control/controlPersona.php';
 $pageTitle = 'Editar Persona';
 include __DIR__ . '/../estructura/header.php';
 
-$dni = isset($_POST['dni']) ? trim($_POST['dni']) : '';
+$controlPersona = new controlPersona();
+$formData = $controlPersona->getFormData($_GET);
+$dni = $formData['dni'] ?? '';
+
 if ($dni === '') {
   echo '<div class="alert alert-warning">No se recibió el DNI.</div>';
   echo '<a class="btn btn-secondary" href="../BuscarPersona.html">Volver</a>';
@@ -12,8 +15,7 @@ if ($dni === '') {
   exit;
 }
 
-$cp = new controlPersona();
-$persona = $cp->buscar($dni);
+$persona = $controlPersona->buscar($dni);
 
 if (!$persona) {
   echo '<div class="alert alert-danger">No se encontró una persona con el DNI ingresado.</div>';

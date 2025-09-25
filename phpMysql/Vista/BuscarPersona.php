@@ -6,7 +6,7 @@ include __DIR__ . '/estructura/header.php';
     <h1 class="mb-4">Buscar Persona por DNI</h1>
     <div class="row">
       <div class="col-lg-6">
-        <form class="needs-validation" novalidate action="accion/formAccion.php" method="post" id="formBuscarPersona">
+        <form class="needs-validation" novalidate action="accion/formAccion.php" method="get" id="formBuscarPersona">
           <input type="hidden" name="op" value="buscarPersona">
           <div class="mb-3">
             <label for="dni" class="form-label">DNI</label>
