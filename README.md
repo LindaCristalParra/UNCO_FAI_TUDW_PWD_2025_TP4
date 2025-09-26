@@ -1,66 +1,107 @@
-# UNCO_FAI_TUDW_PWD_2025_TP4
+# Trabajo Práctico Nº 4 – PHP / MySQL / PDO
 
-Trabajo Práctico No 4 –
-PHP / MySql / PDO
-Observación: Para la realización de este práctico deberán acceder a la base de datos “infoautos” que
-se adjunta. Esta base contiene dos tablas, “auto” y “persona”, cada auto tiene una referencia a su
-UNICO dueño (persona). Cear un proyecto php “phpMysql” en donde desarrollarán los ejercicios.
-Utilice la clase BaseDatos.php vista en clase para trabajar con la bases de datos.
+Repositorio del proyecto para el Trabajo Práctico Nº 4 de la materia Programación Web Dinámica (UNCO FAI), correspondiente al grupo 02.
 
-Ejercicio 1- Crear la capa de los datos, implementando el ORM (Modelo de datos) para la base de datos
-entregada. Recordar que se debe generar al menos, un clase php por cada tabla. Cada clase debe contener
-las variables de instancia y sus metodos get y set; ademas de los metodos que nos permitan seleccionar,
-ingresar, modificar y eliminar los datos de cada tabla.
+## Descripción
 
-Ejercicio 2 - Crear la capa de control, que nos permitan acceder al ORM (Modelo de datos) y entregarle la
-informacion a las paginas de la interface.
+Este trabajo práctico consiste en el desarrollo de una aplicación web en PHP que interactúa con la base de datos **infoautos** (con tablas `auto` y `persona`), utilizando PDO para la conexión y la clase `BaseDatos.php` vista en clase. Cada auto está asociado a un único dueño (persona).
 
-Ejercicio 3 –Crear una pagina php “VerAutos.php”, en ella usando la capa de control correspondiente
-mostrar todos los datos de los autos que se encuentran cargados, de los dueños mostrar nombre y apellido.
-En caso de que no se encuentre ningún auto cargado en la base mostrar un mensaje indicando que no hay
-autos cargados.
+La aplicación está organizada respetando el patrón MVC y los siguientes ejercicios:
 
-Ejercicio 4 – Crear una pagina "buscarAuto.php" que contenga un formulario en donde se solicite el numero
-de patente de un auto, estos datos deberán ser enviados a una pagina “accionBuscarAuto.php” en donde
-usando la clase de control correspondiente, se soliciten los datos completos del auto que se corresponda con
-la patente ingresada y mostrar los datos en una tabla. También deberán mostrar los carteles que crean
-convenientes en caso de que no se encuentre ningún auto con la patente ingresada.
-Utilizar css y validaciones javaScript cuando crea conveniente. Recordar usar la capa de control antes
-generada, no se puede acceder directamente a las clases del ORM.
+### Ejercicio 1: Capa de Datos (Modelo ORM)
 
-Ejercicio 5 – Crear una página "listaPersonas.php" que muestre un listado con las personas que se
-encuentran cargadas y un link a otra página “autosPersona.php” que recibe un dni de una persona y muestra
-los datos de la persona y un listado de los autos que tiene asociados. Recordar usar la capa de control antes
-generada, no se puede acceder directamente a las clases del ORM.
+- Implementación del modelo de datos (ORM) para la base entregada.
+- Una clase PHP por cada tabla (`Auto`, `Persona`), con variables de instancia, getters/setters, y métodos para seleccionar, ingresar, modificar y eliminar datos.
 
-Ejercicio 6 – Crear una página “NuevaPersona.php” que contenga un formulario que permita solicitar todos
-los datos de una persona. Estos datos serán enviados a una página “accionNuevaPersona.php” que cargue
-un nuevo registro en la tabla persona de la base de datos. Se debe mostrar un mensaje que indique si se
-pudo o no cargar los datos de la persona. Utilizar css y validaciones javaScript cuando crea conveniente.
-Recordar usar la capa de control antes generada, no se puede acceder directamente a las clases del ORM.
+### Ejercicio 2: Capa de Control
 
-Ejercicio 7 – Crear una página “NuevoAuto.php” que contenga un formulario en el que se permita cargar
-todos los datos de un auto (incluso su dueño). Estos datos serán enviados a una página
-“accionNuevoAuto.php” que cargue un nuevo registro en la tabla auto de la base de datos. Se debe chequear
-antes que la persona dueña del auto ya se encuentre cargada en la base de datos, de no ser así mostrar un
-link a la página que permite carga una nueva persona. Se debe mostrar un mensaje que indique si se pudo o
-no cargar los datos Utilizar css y validaciones javaScript cuando crea conveniente. Recordar usar la capa de
-control antes generada, no se puede acceder directamente a las clases del ORM.
+- Implementación de controladores para acceder al modelo y entregar información a las vistas.
 
-Ejercicio 8 – Crear una página “CambioDuenio.php” que contenga un formulario en donde se solicite el
-numero de patente de un auto y un numero de documento de una persona, estos datos deberán ser enviados
-a una página “accionCambioDuenio.php” en donde se realice cambio del dueño del auto de la patente
-ingresada en el formulario. Mostrar mensajes de error en caso de que el auto o la persona no se encuentren
-cargados. Utilizar css y validaciones javaScript cuando crea conveniente. Recordar usar la capa de control
-antes generada, no se puede acceder directamente a las clases del ORM.
+### Ejercicio 3: VerAutos.php
 
-Ejercicio 9 – Crear una página “BuscarPersona.html” que contenga un formulario que permita cargar un
-numero de documento de una persona. Estos datos serán enviados a una página “accionBuscarPersona.php”
-busque los datos de la persona cuyo documento sea el ingresado en el formulario los muestre en un nuevo
-formulario; a su vez este nuevo formulario deberá permitir modificar los datos mostrados (excepto el nro de
-documento) y estos serán enviados a otra página “ActualizarDatosPersona.php” que actualiza los datos de la
-persona. Utilizar css y validaciones javaScript cuando crea conveniente. Recordar usar la capa de control
-antes generada, no se puede acceder directamente a las clases del ORM.
+- Página que muestra todos los autos cargados, incluyendo nombre y apellido del dueño.
+- Si no hay autos, se muestra un mensaje indicativo.
 
+### Ejercicio 4: BuscarAuto.php y accionBuscarAuto.php
 
-Grupo: Ramiro Navarrete, Andrea Crespillo, Lautaro Mellado y Linda Parra
+- Formulario para buscar auto por patente.
+- Muestra los datos del auto y dueño correspondiente.
+- Mensajes adecuados si no se encuentra el auto.
+- Uso de CSS y validaciones JavaScript.
+
+### Ejercicio 5: listaPersonas.php y autosPersona.php
+
+- Listado de personas con link para ver autos asociados.
+- Muestra datos de la persona y su listado de autos.
+
+### Ejercicio 6: NuevaPersona.php y accionNuevaPersona.php
+
+- Formulario para agregar nueva persona.
+- Mensaje indicando éxito o falla en la carga.
+- CSS y validaciones JavaScript.
+
+### Ejercicio 7: NuevoAuto.php y accionNuevoAuto.php
+
+- Formulario para agregar nuevo auto (incluyendo dueño).
+- Chequeo previo de existencia del dueño.
+- Mensajes y link para agregar nueva persona si no existe.
+- CSS y validaciones JavaScript.
+
+### Ejercicio 8: CambioDuenio.php y accionCambioDuenio.php
+
+- Formulario para cambiar dueño de auto por patente y documento.
+- Mensajes de error si auto o persona no existen.
+- CSS y validaciones JavaScript.
+
+### Ejercicio 9: BuscarPersona.html, accionBuscarPersona.php y ActualizarDatosPersona.php
+
+- Formulario para buscar persona por documento.
+- Muestra datos y permite modificarlos (excepto documento).
+- Actualización de datos con validaciones y estilos.
+
+## Organización del Proyecto
+
+```
+phpMysql/
+├── Modelo/
+│   ├── Auto.php
+│   ├── Persona.php
+│   ├── infoAutos.sql
+│   └── Conector/
+├── Control/
+│   ├── controlAuto.php
+│   └── controlPersona.php
+├── Vista/
+│   └── (subcarpetas y archivos varios de vistas)
+└── README.md
+```
+
+- **Modelo** contiene las clases de datos principales (`Auto.php`, `Persona.php`), el script de base de datos (`infoAutos.sql`) y el subdirectorio `Conector` para la conexión.
+- **Control** contiene los controladores (`controlAuto.php`, `controlPersona.php`).
+- **Vista** contiene las páginas principales de la interfaz y puede incluir una estructura interna para CSS y JS.
+
+## Tecnologías Utilizadas
+
+- **PHP** (POO, PDO)
+- **MySQL**
+- **Bootstrap** (estilos y validaciones)
+- **JavaScript** (validaciones)
+
+## Grupo 02
+
+- Ramiro Navarrete
+- Andrea Crespillo
+- Lautaro Mellado
+- Linda Parra
+
+---
+
+**Observaciones y buenas prácticas:**
+- Todas las salidas al usuario están implementadas en la capa de **Vista**, separando correctamente la lógica y la presentación.
+- No se accede directamente al ORM desde las vistas; siempre se utiliza la capa de control.
+- Se aplican buenas prácticas de seguridad (validaciones, sanitización) y organización de código.
+
+---
+
+> **Repositorio:** [UNCO_FAI_TUDW_PWD_2025_TP4](https://github.com/LindaCristalParra/UNCO_FAI_TUDW_PWD_2025_TP4)
+
